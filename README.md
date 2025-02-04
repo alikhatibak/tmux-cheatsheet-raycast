@@ -1,4 +1,4 @@
-# Tmux Command Lookup for Raycast
+# 🔎 Tmux Command Lookup for Raycast
 
 Tmux Command Lookup is a Raycast extension built with TypeScript and React that provides a comprehensive, searchable cheatsheet for tmux commands. The extension groups commands by category (e.g., Session Commands, Window Commands, Pane Commands, etc.) and displays detailed information about each command, including the terminal syntax and default keyboard shortcuts.
 
