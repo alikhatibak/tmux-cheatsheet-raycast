@@ -53,28 +53,27 @@ tmux-command-lookup/
 
 ## Usage:
 
-### Viewing Commands:
+##### Viewing Commands:
 Launch the extension from Raycast. With no search text entered, commands are grouped by category.
 
-### Searching Commands:
+##### Searching Commands:
 Start typing in the search bar to see a flat, filtered list of commands that match your query.
 
-### Viewing Details:
+##### Viewing Details:
 Select a command to open a detailed view showing the terminal command, keyboard shortcut, and usage instructions.
 
-### Copying Commands:
+##### Copying Commands:
 In the detail view, click the Copy Command action to copy the tmux command to your clipboard.
 
----
 ## Customization:
 
-### Adding or Updating Commands:
+##### Adding or Updating Commands:
 Edit the tmuxCommands.ts file to add, remove, or modify tmux commands. Each command includes:
 id
 command (the terminal command)
 description (with keyboard shortcuts and usage)
 category (for grouping)
-### UI Adjustments:
+##### UI Adjustments:
 Modify CommandDetail.tsx to change how command details are displayed. The component uses Markdown, so you can easily tweak headers, code blocks, and other formatting.
 ## Contributing
 
