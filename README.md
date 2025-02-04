@@ -27,9 +27,16 @@ Tmux Command Lookup is a Raycast extension built with TypeScript and React that 
   Easily copy any command to your clipboard with a single click.
 
 ## File Structure
-
-tmux-command-lookup/ ├── src/ │ ├── CommandDetail.tsx # Displays detailed command info using Markdown │ ├── index.tsx # Main entry point that groups commands by category or search │ └── tmuxCommands.ts # Contains tmux commands, their descriptions, and categories ├── package.json # Project configuration and dependencies ├── tsconfig.json # TypeScript configuration └── README.md # This file
-
+```
+tmux-command-lookup/
+├── src/ 
+│    ├── CommandDetail.tsx   # Displays detailed command info using Markdown 
+│    ├── tmux-cheatsheet.tsx # Main entry point that groups commands by category or search 
+│    └── tmuxCommands.ts     # Contains tmux commands, their descriptions, and categories
+├── package.json             # Project configuration and dependencies
+├── tsconfig.json            # TypeScript configuration
+└── README.md                # This file
+```
 
 ## Installation
 
@@ -45,16 +52,21 @@ tmux-command-lookup/ ├── src/ │ ├── CommandDetail.tsx # Displays d
     Follow Raycast's deployment guide to package and distribute your extension.
 
 ## Usage:
----
+
 ### Viewing Commands:
 Launch the extension from Raycast. With no search text entered, commands are grouped by category.
+
 ### Searching Commands:
 Start typing in the search bar to see a flat, filtered list of commands that match your query.
+
 ### Viewing Details:
 Select a command to open a detailed view showing the terminal command, keyboard shortcut, and usage instructions.
+
 ### Copying Commands:
 In the detail view, click the Copy Command action to copy the tmux command to your clipboard.
-## Customization
+
+---
+## Customization:
 
 ### Adding or Updating Commands:
 Edit the tmuxCommands.ts file to add, remove, or modify tmux commands. Each command includes:
