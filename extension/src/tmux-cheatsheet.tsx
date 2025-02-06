@@ -1,87 +1,64 @@
-// src/index.tsx
-import { ActionPanel, Action, List } from "@raycast/api";
-import { useState } from "react";
+import { Action, ActionPanel, List } from "@raycast/api";
+import { useMemo, useState, useEffect } from "react";
+import Fuse from "fuse.js";
 import { tmuxCommands, TmuxCommand } from "./tmuxCommands";
-import CommandDetail from "./CommandDetail";
 
-export default function CommandLookup() {
+// Custom debounce hook
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => setDebouncedValue(value), delay);
+    return () => clearTimeout(handler);
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
+export default function Command() {
   const [searchText, setSearchText] = useState("");
 
-  // When search text is provided, display a flat, filtered list.
-  if (searchText.trim().length > 0) {
-    const query = searchText.toLowerCase();
-    const filteredCommands: TmuxCommand[] = tmuxCommands.filter((cmd: TmuxCommand) =>
-      (cmd.command + " " + cmd.description + " " + cmd.category).toLowerCase().includes(query)
-    );
-    return (
-      <List
-        searchText={searchText}
-        onSearchTextChange={setSearchText}
-        searchBarPlaceholder="Search tmux commands..."
-      >
-        {filteredCommands.map((cmd: TmuxCommand) => (
-          <List.Item
-            key={cmd.id}
-            title={cmd.command}
-            subtitle={cmd.description}
-            actions={
-              <ActionPanel>
-                <Action.Push title="Show Details" target={<CommandDetail command={cmd} />} />
-              </ActionPanel>
-            }
-          />
-        ))}
-      </List>
-    );
-  } else {
-    // When there's no search text, group commands by their category.
-    const grouped: { [category: string]: TmuxCommand[] } = {};
-    tmuxCommands.forEach((cmd: TmuxCommand) => {
-      if (!grouped[cmd.category]) {
-        grouped[cmd.category] = [];
-      }
-      grouped[cmd.category].push(cmd);
-    });
+  // Use our custom debounce hook to update the search text after 100ms of inactivity.
+  const debouncedSearchText = useDebounce(searchText, 100);
 
-    // Define the order in which categories should appear.
-    const orderedCategories: string[] = [
-      "Session Commands",
-      "Window Commands",
-      "Pane Commands",
-      "Resize Commands",
-      "Copy/Paste Commands",
-      "Layout & Options",
-      "Miscellaneous Commands",
-    ];
+  // Memoize Fuse options for efficiency.
+  const fuseOptions = useMemo(
+    () => ({
+      keys: ["id", "command", "description", "category", "benefit"],
+      includeScore: true,
+      threshold: 0.4, // Adjust to make matching more or less lenient.
+    }),
+    []
+  );
 
-    return (
-      <List
-        searchText={searchText}
-        onSearchTextChange={setSearchText}
-        searchBarPlaceholder="Search tmux commands..."
-      >
-        {orderedCategories.map((category: string) => {
-          const commands: TmuxCommand[] = grouped[category] || [];
-          if (commands.length === 0) return null;
-          return (
-            <List.Section key={category} title={category}>
-              {commands.map((cmd: TmuxCommand) => (
-                <List.Item
-                  key={cmd.id}
-                  title={cmd.command}
-                  subtitle={cmd.description}
-                  actions={
-                    <ActionPanel>
-                      <Action.Push title="Show Details" target={<CommandDetail command={cmd} />} />
-                    </ActionPanel>
-                  }
-                />
-              ))}
-            </List.Section>
-          );
-        })}
-      </List>
-    );
-  }
+  // Create a Fuse index only once (since tmuxCommands is static).
+  const fuse = useMemo(() => new Fuse(tmuxCommands, fuseOptions), [fuseOptions]);
+
+  // Filter commands based on the debounced search text.
+  const filteredCommands: TmuxCommand[] = useMemo(() => {
+    if (debouncedSearchText.trim() === "") {
+      return tmuxCommands;
+    }
+    return fuse.search(debouncedSearchText).map((result) => result.item);
+  }, [debouncedSearchText, fuse]);
+
+  return (
+    <List navigationTitle="Tmux Commands" searchText={searchText} onSearchTextChange={setSearchText}>
+      {filteredCommands.map((cmd) => (
+        <List.Item
+          key={cmd.id}
+          title={cmd.id}
+          subtitle={cmd.description}
+          accessories={[{ text: cmd.category }]}
+          icon={cmd.icon}
+          actions={
+            <ActionPanel>
+              <Action.CopyToClipboard title="Copy Command" content={cmd.command} />
+            </ActionPanel>
+          }
+        />
+      ))}
+    </List>
+  );
 }
 
