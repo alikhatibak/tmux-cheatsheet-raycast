@@ -230,7 +230,7 @@ export const tmuxCommands: TmuxCommand[] = [
     description:
       "Displays pane numbers to assist in selection. Shortcut: `<C-b> + q` (or `<Leader> + q`)\nTerminal: `tmux display-panes`",
     category: "Pane Commands",
-    icon: Icon.Number,
+    icon: Icon.Hashtag,
     benefit: "Show pane numbers for quick selection by number.",
   },
   {
