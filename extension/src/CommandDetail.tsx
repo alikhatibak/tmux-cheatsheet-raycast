@@ -43,4 +43,3 @@ ${command.benefit ? `## 💡 Why Use This Command?\n${command.benefit}\n` : ""}
     />
   );
 }
-

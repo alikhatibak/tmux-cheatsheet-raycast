@@ -5,7 +5,7 @@ export interface TmuxCommand {
   command: string;
   description: string;
   category: string;
-  icon?: string;    // Optional: Path or system icon identifier.
+  icon?: string; // Optional: Path or system icon identifier.
   benefit?: string; // Optional: Explains why the command is useful.
 }
 
@@ -14,8 +14,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "new-session",
     command: "tmux new-session -s <session_name>",
-    description:
-      "Creates a new session. (Terminal: `tmux new-session -s <session_name>`) (No default shortcut)",
+    description: "Creates a new session. (Terminal: `tmux new-session -s <session_name>`) (No default shortcut)",
     category: "Session Commands",
     icon: Icon.Window,
     benefit: "Starting a new session helps you isolate tasks and organize your workflow.",
@@ -32,8 +31,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "list-sessions",
     command: "tmux list-sessions",
-    description:
-      "Lists all active sessions. (Terminal: `tmux list-sessions`) (No default shortcut)",
+    description: "Lists all active sessions. (Terminal: `tmux list-sessions`) (No default shortcut)",
     category: "Session Commands",
     icon: Icon.Window,
     benefit: "View all active sessions to manage and switch between them efficiently.",
@@ -41,8 +39,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "kill-session",
     command: "tmux kill-session -t <session_name>",
-    description:
-      "Kills the specified session. (Terminal: `tmux kill-session -t <session_name>`) (No default shortcut)",
+    description: "Kills the specified session. (Terminal: `tmux kill-session -t <session_name>`) (No default shortcut)",
     category: "Session Commands",
     icon: Icon.Window,
     benefit: "Terminate sessions you no longer need to free up system resources.",
@@ -50,8 +47,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "rename-session",
     command: "tmux rename-session <new_name>",
-    description:
-      "Renames the current session. (Terminal: `tmux rename-session <new_name>`) (No default shortcut)",
+    description: "Renames the current session. (Terminal: `tmux rename-session <new_name>`) (No default shortcut)",
     category: "Session Commands",
     icon: Icon.Window,
     benefit: "Renaming sessions makes them easier to identify and manage.",
@@ -77,8 +73,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "list-clients",
     command: "tmux list-clients",
-    description:
-      "Lists all tmux clients attached to the server. (Terminal: `tmux list-clients`) (No default shortcut)",
+    description: "Lists all tmux clients attached to the server. (Terminal: `tmux list-clients`) (No default shortcut)",
     category: "Session Commands",
     icon: Icon.List,
     benefit: "Identify all tmux clients and manage your connections efficiently.",
@@ -115,8 +110,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "kill-window",
     command: "tmux kill-window",
-    description:
-      "Kills the current window. Shortcut: `<C-b> + &` (or `<Leader> + &`)\nTerminal: `tmux kill-window`",
+    description: "Kills the current window. Shortcut: `<C-b> + &` (or `<Leader> + &`)\nTerminal: `tmux kill-window`",
     category: "Window Commands",
     icon: Icon.Sidebar,
     benefit: "Close windows you no longer need to streamline your session.",
@@ -133,8 +127,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "next-window",
     command: "tmux next-window",
-    description:
-      "Moves to the next window. Shortcut: `<C-b> + n` (or `<Leader> + n`)\nTerminal: `tmux next-window`",
+    description: "Moves to the next window. Shortcut: `<C-b> + n` (or `<Leader> + n`)\nTerminal: `tmux next-window`",
     category: "Window Commands",
     icon: Icon.Sidebar,
     benefit: "Cycle forward through windows to find the one you need.",
@@ -181,7 +174,7 @@ export const tmuxCommands: TmuxCommand[] = [
     id: "split-window-vertical",
     command: "tmux split-window -v",
     description:
-      "Splits the pane vertically. Shortcut: `<C-b> + \"` (or `<Leader> + \"`)\nTerminal: `tmux split-window -v`",
+      'Splits the pane vertically. Shortcut: `<C-b> + "` (or `<Leader> + "`)\nTerminal: `tmux split-window -v`',
     category: "Pane Commands",
     icon: Icon.Terminal,
     benefit: "Divide your current pane vertically for side-by-side task management.",
@@ -270,8 +263,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "break-pane",
     command: "tmux break-pane",
-    description:
-      "Breaks the current pane into a separate window. (Terminal: `tmux break-pane`) (No default shortcut)",
+    description: "Breaks the current pane into a separate window. (Terminal: `tmux break-pane`) (No default shortcut)",
     category: "Pane Commands",
     icon: Icon.Window,
     benefit: "Promote a pane to its own window for focused work.",
@@ -297,8 +289,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "list-panes",
     command: "tmux list-panes",
-    description:
-      "Lists all panes in the current window. (Terminal: `tmux list-panes`) (No default shortcut)",
+    description: "Lists all panes in the current window. (Terminal: `tmux list-panes`) (No default shortcut)",
     category: "Pane Commands",
     icon: Icon.List,
     benefit: "View all panes in the current window for better navigation.",
@@ -326,8 +317,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "resize-pane-left",
     command: "tmux resize-pane -L 10",
-    description:
-      "Resizes the pane by moving its left border left 10 cells.\n(Terminal: `tmux resize-pane -L 10`)",
+    description: "Resizes the pane by moving its left border left 10 cells.\n(Terminal: `tmux resize-pane -L 10`)",
     category: "Resize Commands",
     icon: Icon.ChevronLeft,
     benefit: "Decrease the pane width by shifting its left boundary.",
@@ -335,8 +325,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "resize-pane-right",
     command: "tmux resize-pane -R 10",
-    description:
-      "Resizes the pane by moving its right border right 10 cells.\n(Terminal: `tmux resize-pane -R 10`)",
+    description: "Resizes the pane by moving its right border right 10 cells.\n(Terminal: `tmux resize-pane -R 10`)",
     category: "Resize Commands",
     icon: Icon.ChevronRight,
     benefit: "Increase the pane width by shifting its right boundary.",
@@ -344,8 +333,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "resize-pane-up",
     command: "tmux resize-pane -U 5",
-    description:
-      "Resizes the pane by moving its top border up 5 cells.\n(Terminal: `tmux resize-pane -U 5`)",
+    description: "Resizes the pane by moving its top border up 5 cells.\n(Terminal: `tmux resize-pane -U 5`)",
     category: "Resize Commands",
     icon: Icon.ChevronUp,
     benefit: "Decrease the pane height by shifting its top boundary.",
@@ -353,8 +341,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "resize-pane-down",
     command: "tmux resize-pane -D 5",
-    description:
-      "Resizes the pane by moving its bottom border down 5 cells.\n(Terminal: `tmux resize-pane -D 5`)",
+    description: "Resizes the pane by moving its bottom border down 5 cells.\n(Terminal: `tmux resize-pane -D 5`)",
     category: "Resize Commands",
     icon: Icon.ChevronDown,
     benefit: "Increase the pane height by shifting its bottom boundary.",
@@ -409,8 +396,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "list-buffers",
     command: "tmux list-buffers",
-    description:
-      "Lists all buffers stored in tmux. (Terminal: `tmux list-buffers`) (No default shortcut)",
+    description: "Lists all buffers stored in tmux. (Terminal: `tmux list-buffers`) (No default shortcut)",
     category: "Copy/Paste Commands",
     icon: Icon.List,
     benefit: "Manage and review multiple copy buffers within your session.",
@@ -447,8 +433,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "set-option",
     command: "tmux set-option -g <option> <value>",
-    description:
-      "Sets a tmux option globally. (Terminal: `tmux set-option -g <option> <value>`) (No default shortcut)",
+    description: "Sets a tmux option globally. (Terminal: `tmux set-option -g <option> <value>`) (No default shortcut)",
     category: "Layout & Options",
     icon: Icon.Gear,
     benefit: "Customize tmux behavior by setting global options.",
@@ -456,8 +441,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "show-options",
     command: "tmux show-options -g",
-    description:
-      "Displays global tmux options. (Terminal: `tmux show-options -g`) (No default shortcut)",
+    description: "Displays global tmux options. (Terminal: `tmux show-options -g`) (No default shortcut)",
     category: "Layout & Options",
     icon: Icon.List,
     benefit: "Review current tmux settings and configurations.",
@@ -476,8 +460,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "list-keys",
     command: "tmux list-keys",
-    description:
-      "Displays current key bindings.\n(Terminal: `tmux list-keys`) (No default shortcut)",
+    description: "Displays current key bindings.\n(Terminal: `tmux list-keys`) (No default shortcut)",
     category: "Miscellaneous Commands",
     icon: Icon.List,
     benefit: "View all key bindings to customize or learn the shortcuts in tmux.",
@@ -494,8 +477,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "lock-session",
     command: "tmux lock-session",
-    description:
-      "Locks the current tmux session.\n(Terminal: `tmux lock-session`) (No default shortcut)",
+    description: "Locks the current tmux session.\n(Terminal: `tmux lock-session`) (No default shortcut)",
     category: "Miscellaneous Commands",
     icon: Icon.Lock,
     benefit: "Secure your session by locking it when you step away.",
@@ -503,8 +485,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "clock-mode",
     command: "tmux clock-mode",
-    description:
-      "Displays a clock in the current pane. (Terminal: `tmux clock-mode`) (No default shortcut)",
+    description: "Displays a clock in the current pane. (Terminal: `tmux clock-mode`) (No default shortcut)",
     category: "Miscellaneous Commands",
     icon: Icon.Clock,
     benefit: "Keep track of time directly within your terminal.",
@@ -521,8 +502,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "list-commands",
     command: "tmux list-commands",
-    description:
-      "Lists all available tmux commands. (Terminal: `tmux list-commands`) (No default shortcut)",
+    description: "Lists all available tmux commands. (Terminal: `tmux list-commands`) (No default shortcut)",
     category: "Miscellaneous Commands",
     icon: Icon.List,
     benefit: "Discover all commands available in tmux for extended functionality.",
@@ -566,8 +546,7 @@ export const tmuxCommands: TmuxCommand[] = [
   {
     id: "refresh-client",
     command: "tmux refresh-client -S",
-    description:
-      "Refreshes the tmux client display. (Terminal: `tmux refresh-client -S`) (No default shortcut)",
+    description: "Refreshes the tmux client display. (Terminal: `tmux refresh-client -S`) (No default shortcut)",
     category: "Miscellaneous Commands",
     icon: Icon.RotateClockwise,
     benefit: "Force a refresh of the client display to update changes.",
@@ -581,7 +560,7 @@ export const tmuxCommands: TmuxCommand[] = [
       "Toggles zoom for the active pane. Shortcut: `<C-b> + z` (or `<Leader> + z`)\nTerminal: `tmux resize-pane -Z`",
     category: "Zoom Commands",
     icon: Icon.Maximize,
-    benefit: "Maximize the current pane to fill the entire window for focused work, then toggle back to the original layout."
+    benefit:
+      "Maximize the current pane to fill the entire window for focused work, then toggle back to the original layout.",
   },
 ];
-

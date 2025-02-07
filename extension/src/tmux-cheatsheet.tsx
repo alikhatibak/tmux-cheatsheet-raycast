@@ -1,7 +1,8 @@
-import { Action, ActionPanel, List } from "@raycast/api";
+import { Action, ActionPanel, List, useNavigation } from "@raycast/api";
 import { useMemo, useState, useEffect } from "react";
 import Fuse from "fuse.js";
 import { tmuxCommands, TmuxCommand } from "./tmuxCommands";
+import CommandDetail from "./CommandDetail";
 
 // Custom debounce hook
 function useDebounce<T>(value: T, delay: number): T {
@@ -17,6 +18,7 @@ function useDebounce<T>(value: T, delay: number): T {
 
 export default function Command() {
   const [searchText, setSearchText] = useState("");
+  const { push } = useNavigation(); // Navigation hook to push details page
 
   // Use our custom debounce hook to update the search text after 100ms of inactivity.
   const debouncedSearchText = useDebounce(searchText, 100);
@@ -26,9 +28,9 @@ export default function Command() {
     () => ({
       keys: ["id", "command", "description", "category", "benefit"],
       includeScore: true,
-      threshold: 0.4, // Adjust to make matching more or less lenient.
+      threshold: 0.4, // Adjust to fine-tune matching leniency.
     }),
-    []
+    [],
   );
 
   // Create a Fuse index only once (since tmuxCommands is static).
@@ -53,6 +55,7 @@ export default function Command() {
           icon={cmd.icon}
           actions={
             <ActionPanel>
+              <Action title="View Details" onAction={() => push(<CommandDetail command={cmd} />)} />
               <Action.CopyToClipboard title="Copy Command" content={cmd.command} />
             </ActionPanel>
           }
@@ -61,4 +64,3 @@ export default function Command() {
     </List>
   );
 }
-
