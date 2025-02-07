@@ -14,8 +14,8 @@
   "commands": [
     {
       "name": "tmux-cheatsheet",
-      "title": "Search Tmux Commands",
-      "description": "Shows a list of common tmux commands.",
+      "title": "Tmux Command Search",
+      "description": "Search for tmux commands, shortcuts, and descriptions.",
       "mode": "view"
     }
   ],
