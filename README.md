@@ -28,7 +28,7 @@ Tmux Command Lookup is a Raycast extension built with TypeScript and React that 
 
 ## File Structure
 ```
-tmux-command-lookup/
+extension/
 ├── src/ 
 │    ├── CommandDetail.tsx   # Displays detailed command info using Markdown 
 │    ├── tmux-cheatsheet.tsx # Main entry point that groups commands by category or search 
@@ -37,19 +37,6 @@ tmux-command-lookup/
 ├── tsconfig.json            # TypeScript configuration
 └── README.md                # This file
 ```
-
-## Installation
-
-1. **Clone the Repository:**
-   `git clone https://github.com/yourusername/tmux-command-lookup.git`
-2. Navigate to the Project Directory:
-   `cd tmux-command-lookup`
-3. Install Dependencies:
-   `npm install`
-4. Run the Extension in Development Mode:
-   `npm run dev`
-1. Deploy:
-    Follow Raycast's deployment guide to package and distribute your extension.
 
 ## Usage:
 
